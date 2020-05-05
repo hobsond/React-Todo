@@ -19,6 +19,8 @@ class App extends React.Component {
       },
       search:'',
       newtodo :'',
+      time:'',
+      timeofday:'',
       searchitems:[]
     
     }
@@ -36,6 +38,7 @@ class App extends React.Component {
     }})
     
   }
+
   clickComplete = evt=>{
      const name =evt.target.innerText
     const value= evt.target.value
@@ -75,9 +78,10 @@ class App extends React.Component {
 
   
   }
+
   
   submitChange= evt=>{
-    evt.preventDefault()
+    // evt.preventDefault()
     this.setState({toDos:[...this.state.toDos,this.state.newtodo]})
     this.setState({newtodo:this.state.initial})
     
@@ -95,6 +99,7 @@ class App extends React.Component {
     })
     console.log(filter)
     this.setState({toDos:filter})
+    // localStorage.removeItem('Todos')
   }
   searchChange=evt =>{
     this.setState({search:evt.target.value})
@@ -108,6 +113,21 @@ class App extends React.Component {
     }
     
   }
+
+  componentWillMount(){
+    localStorage.getItem('Todos') && this.setState({toDos:JSON.parse(localStorage.getItem('Todos'))})
+
+
+  }
+  componentDidMount() {
+    
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('Todos',JSON.stringify(this.state.toDos))
+  }
+  
+  
 
   render() {
     return (

@@ -5,6 +5,7 @@ export default function TodoForm(props) {
     return (
         <form onSubmit={submitChange} >
             <input name='todo'value={newtodo.todo} onChange={inputChange} type='text' />
+            
             <button onClick={submitChange}> submit </button>
             <button onClick={clear}> Clear Completed </button>
             
