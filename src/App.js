@@ -113,7 +113,7 @@ class App extends React.Component {
     return (
       <div>
       <TodoForm inputChange = {this.inputChange} clear={this.clear} newtodo={this.state.newtodo} submitChange={this.submitChange} />
-      <Search search = {this.searchChange} searchitems={this.state.searchitems} />
+      {this.state.toDos.length >= 2 ?<Search search = {this.searchChange} searchitems={this.state.searchitems} /> : null}
         <TodoList list ={this.state.toDos} complete={this.clickComplete} />
       </div>
     );
